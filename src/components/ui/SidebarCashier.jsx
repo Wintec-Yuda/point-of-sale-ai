@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { FiHome, FiShoppingCart, FiLogOut, FiX, FiMenu } from 'react-icons/fi'
 import { useState, useEffect } from 'react'
 
@@ -11,6 +11,7 @@ const navItems = [
 ]
 
 export default function SidebarCashier() {
+  const router = useRouter()
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
@@ -27,6 +28,10 @@ export default function SidebarCashier() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const handleLogout = () => {
+    router.push('/')
+  }
 
   return (
     <>
@@ -69,12 +74,12 @@ export default function SidebarCashier() {
             </ul>
           </nav>
 
-          <Link href="/" className="mt-auto mb-4">
+          <div onClick={handleLogout} href="/" className="mt-auto mb-4">
             <a className="flex items-center p-3 w-full rounded-lg text-gray-600 hover:bg-gray-100">
               <FiLogOut className="mr-3" />
               <span className="font-medium">Logout</span>
             </a>
-          </Link>
+          </div>
         </div>
       </aside>
 
