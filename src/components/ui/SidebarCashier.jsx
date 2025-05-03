@@ -69,12 +69,12 @@ export default function SidebarCashier() {
             </ul>
           </nav>
 
-          <div className="mt-auto mb-4">
-            <button className="flex items-center p-3 w-full rounded-lg text-gray-600 hover:bg-gray-100">
+          <Link href="/" className="mt-auto mb-4">
+            <a className="flex items-center p-3 w-full rounded-lg text-gray-600 hover:bg-gray-100">
               <FiLogOut className="mr-3" />
               <span className="font-medium">Logout</span>
-            </button>
-          </div>
+            </a>
+          </Link>
         </div>
       </aside>
 
