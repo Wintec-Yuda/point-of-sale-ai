@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+anda sebagai UI/UX developer dan frontend engineer buatkan aplikasi point of sales memakai next js 15 (app router), buatkan, jadi setiap fitur jadikan 1 file jsx, style pake tailwind css, animasi yg keren pake framer motion, icon yg bagus pake react-icons, notifikasi pake toastify, management state pake zustand, untuk proses seperti CRUD menggunakan management state
 
-## Getting Started
+design nya modern, pemilihan warna estetik, minimalis, responsive (hp, tablet, dekstop), table pake pagination
 
-First, run the development server:
+struktur folder sesuai dibawah ini:
+src/
+├── app/
+│   ├── layout.jsx                  # Layout utama
+│   ├── page.jsx                    # Halaman memilih mau ke admin atau cashier
+│   |   ├── admin/
+|   |       |-- layout
+|   |       |-- page.jsx            # Halaman Dashboard yang menampilkan kesimpulan, laporan, dll
+│   │       ├── products            
+|   |           |-- page.jsx        # Halaman manajemen produk CRUD
+│   │       ├── suppliers            
+|   |           |-- page.jsx        # Halaman manajemen supplier
+│   │       ├── transactions       
+|   |           |-- page.jsx        # Halaman menampilkan data transaction
+│   |   ├── cashier/
+|   |       |-- layout.jsx
+│   │       ├── page.jsx            # Halaman dashboard untuk transaksi, card, payment, search product
+├── stores/                         # Zustand stores
+│   ├── useProductStore.js          
+│   ├── useCartStore.js 
+│   ├── useTransactionStore.js      
+├── data/                         
+│   ├── products.js          # tambahkan data dummy 50
+│   ├── transactions.js      # tambahkan data dummy 100
+│   ├── supplier.js          # tambahkan data dummy 5
+├── components/                     
+│   ├── modal/
+│       ├── PaymentModal.jsx
+│       ├── ReceiptModal.jsx
+│       ├── ProductModal.jsx
+│       ├── SupplierModal.jsx
+│   ├── ui/
+│       ├── SidebarAdmin.jsx        # responsive (hp, tablet, dekstop)
+│       ├── SidebarCashier.jsx      # responsive (hp, tablet, dekstop)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+data product: id, name, category, price, stock, supplier_id
+data transaction: id, date, items=[products], subtotal, paymentMethod, status(refunded, completed)
+data supplier: id, name, telp, address
