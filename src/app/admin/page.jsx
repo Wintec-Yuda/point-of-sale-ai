@@ -192,7 +192,7 @@ export default function AdminDashboard() {
 				transition={{ delay: 0.6 }}
 				className="bg-white rounded-xl shadow-sm p-6 mt-6"
 			>
-				<h2 className="text-xl font-semibold text-gray-800 mb-4">Insights</h2>
+				<h2 className="text-xl font-semibold text-gray-800 mb-4">Analysis By Artificial Intelligence</h2>
 
 				{loading ? (
 					<div className="flex justify-center items-center py-8">
